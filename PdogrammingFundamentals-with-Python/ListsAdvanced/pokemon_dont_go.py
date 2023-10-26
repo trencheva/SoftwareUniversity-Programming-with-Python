@@ -1,27 +1,25 @@
-pokemons = [int(number) for number in input().split()]
-
-sum_of_removed = 0
-while pokemons:
-    removed_element = 0
+distances_as_integers = [int(s) for s in input().split()]
+sum_of_removed_elements = 0
+while distances_as_integers:
     index = int(input())
 
-    if index < 0:
-        index = 0
-        removed_element = pokemons[index]
-        pokemons[index] = pokemons[-1]
-    elif index > len(pokemons) - 1:
-        index = len(pokemons) - 1
-        removed_element = pokemons[index]
-        pokemons[index] = pokemons[0]
+    if 0 <= index < len(distances_as_integers):
+        removed_element = distances_as_integers[index]
+        distances_as_integers.remove(removed_element)
+    elif index < 0:
+        removed_element = distances_as_integers[0]
+        distances_as_integers[0] = distances_as_integers[-1]
     else:
-        removed_element = pokemons[index]
-        pokemons.remove(pokemons[index])
+        removed_element = distances_as_integers[-1]
+        distances_as_integers[-1] = distances_as_integers[0]
 
-    for current_pokemon in range(len(pokemons)):
-        if pokemons[current_pokemon] <= removed_element:
-            pokemons[current_pokemon] += removed_element
+    sum_of_removed_elements += removed_element
+
+    for element in range(len(distances_as_integers)):
+        if distances_as_integers[element] <= removed_element:
+            distances_as_integers[element] += removed_element
         else:
-            pokemons[current_pokemon] -= removed_element
-    sum_of_removed += removed_element
-result = sum_of_removed
-print(result)
+            distances_as_integers[element] -= removed_element
+
+
+print(sum_of_removed_elements)
