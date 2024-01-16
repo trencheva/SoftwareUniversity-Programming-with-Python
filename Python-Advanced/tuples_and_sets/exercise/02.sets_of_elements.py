@@ -1,14 +1,22 @@
-first_set = set()
-second_set = set()
+# Another solution
+# first_set = set()
+# second_set = set()
+#
+# n, m = input().split()
+#
+# for _ in range(int(n)):
+#     element = input()
+#     first_set.add(element)
+#
+# for _ in range(int(m)):
+#     element = input()
+#     second_set.add(element)
+#
+# print(*first_set.intersection(second_set), sep='\n')
 
-n, m = input().split()
+n, m = [int(num) for num in input().split()]
 
-for _ in range(int(n)):
-    element = input()
-    first_set.add(element)
+first_set = {input() for _ in range(n)}
+second_set = {input() for _ in range(m)}
 
-for _ in range(int(m)):
-    element = input()
-    second_set.add(element)
-
-print(*first_set.intersection(second_set), sep='\n')
+print(*first_set & second_set, sep='\n')

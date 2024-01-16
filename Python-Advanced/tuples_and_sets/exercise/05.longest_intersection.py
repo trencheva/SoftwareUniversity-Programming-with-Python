@@ -1,5 +1,5 @@
 n = int(input())
-intersections = []
+longest_intersection = set()
 
 for _ in range(n):
     first, second = input().split('-')
@@ -11,9 +11,9 @@ for _ in range(n):
     second_set = {number for number in range(int(second_start), int(second_end) + 1)}
 
     intersection = first_set.intersection(second_set)
-    intersections.append(intersection)
 
-intersections.sort(key=len)
-longest_intersection = [str(el) for el in intersections.pop()]
+    if len(intersection) > len(longest_intersection):
+        longest_intersection = intersection
 
-print(f'Longest intersection is [{", ".join(longest_intersection)}] with length {len(longest_intersection)}')
+
+print(f'Longest intersection is [{", ".join([str(x)for x in longest_intersection])}] with length {len(longest_intersection)}')

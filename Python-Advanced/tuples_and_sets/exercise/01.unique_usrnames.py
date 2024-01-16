@@ -5,3 +5,6 @@ for _ in range(int(input())):
     names.add(name)
 
 print(*names, sep='\n')
+
+# another solution
+# print(*{input() for _ in range(int(input()))}, sep='\n')
