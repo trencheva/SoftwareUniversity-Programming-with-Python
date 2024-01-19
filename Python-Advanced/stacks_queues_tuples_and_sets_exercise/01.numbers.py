@@ -1,34 +1,19 @@
 first = {int(num) for num in input().split()}
 second = {int(num) for num in input().split()}
 
+functions = {
+    'Add First': lambda x: [first.add(int(el)) for el in x],
+    'Add Second': lambda x: [second.add(int(el)) for el in x],
+    'Remove First': lambda x: [first.discard(int(el)) for el in x],
+    'Remove Second': lambda x: [second.discard(int(el)) for el in x],
+    'Check Subset': lambda x: print(first.issubset(second) or second.issubset(first))
+}
+
 for _ in range(int(input())):
-    tokens = input().split()
+    first_command, second_command, *data = input().split()
 
-    command = tokens[:2]
-
-    if command[0] == 'Add':
-        nums = {int(num) for num in tokens[2:]}
-        if command[1] == 'First':
-            first = first.union(nums)
-        else:
-            second = second.union(nums)
-
-    elif command[0] == 'Remove':
-        nums = {int(num) for num in tokens[2:]}
-        if command[1] == 'First':
-            for el in nums:
-                if el in first:
-                    first.remove(el)
-        else:
-            for el in nums:
-                if el in second:
-                    second.remove(el)
-
-    else:
-        if first.issubset(second) or second.issubset(first):
-            print(True)
-        else:
-            print(False)
+    command = first_command + ' ' + second_command
+    functions[command](data)
 
 
 print(*sorted(first), sep=', ')
