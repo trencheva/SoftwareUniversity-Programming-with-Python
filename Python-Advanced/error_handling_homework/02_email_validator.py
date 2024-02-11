@@ -33,4 +33,7 @@ while email != 'End':
         raise InvalidDomainError(f'Domain must be one of the following:{", ".join("." + domain for domain in VALID_DOMAINS)}')
     elif len(findall(valid_email_pattern, email.split('@')[0])) > 1:
         raise MustNotContainInvalidCharacters('Some of the used characters are not allowed')
+
+    print("Email is valid")
+
     email = input()
