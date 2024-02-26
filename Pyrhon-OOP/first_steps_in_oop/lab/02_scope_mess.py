@@ -1,5 +1,6 @@
 x = "global"
 
+
 def outer():
     x = "local"
 
