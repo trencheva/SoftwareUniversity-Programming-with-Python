@@ -25,5 +25,11 @@ class Library:
             if book_name in data:
                 return f'The book "{book_name}" is already rented and will be available in {data[book_name]} days!'
 
+    def return_book(self, author: str, book_name: str, user: User) -> str or None:
+        if book_name in user.books:
+            user.books.remove(book_name)
+            self.books_available[author].append(book_name)
+            del self.rented_books[user.username][book_name]
 
-    def return_book(self):
+        else:
+            return f"{user.username} doesn't have this book in his/her records!"
