@@ -1,6 +1,4 @@
 from typing import List
-from project.drink import Drink
-from project.food import Food
 from project.product import Product
 
 
