@@ -1,5 +1,5 @@
-from project.animal import Animal
-from project.worker import Worker
+from project import Animal
+from project import Worker
 
 
 class Zoo:
@@ -12,7 +12,8 @@ class Zoo:
         self.workers: list[Worker] = []
         self.animals: list[Animal] = []
 
-    def amount_finder(self, info, a_or_w_type):
+    @staticmethod
+    def amount_finder(info, a_or_w_type):
         animal_or_worker_list = []
         for animal_or_worker in info:
             if animal_or_worker.__class__.__name__ == a_or_w_type:

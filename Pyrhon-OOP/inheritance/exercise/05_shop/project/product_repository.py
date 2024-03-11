@@ -1,5 +1,5 @@
 from typing import List
-from project.product import Product
+from project import Product
 
 
 class ProductRepository:
